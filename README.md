@@ -16,19 +16,19 @@ CI/CD using GitHub Actions****
 **1. Repository Structure**
 
 **medusa-aws-deploy/**
+medusa-aws-deploy/
 ├── terraform/
-│   ├── main.tf
-│   ├── variables.tf
-│   ├── outputs.tf
-│   ├── ecr.tf
-│   ├── ecs.tf
-│   ├── rds.tf
-│   ├── elasticache.tf
-│   ├── alb.tf
+│   ├── main.tf              → VPC, subnets, gateway
+│   ├── variables.tf         → Inputs like region, secrets
+│   ├── outputs.tf           → Expose ALB URL, DB endpoints
+│   ├── ecr.tf               → ECR image repo
+│   ├── ecs.tf               → ECS Cluster & Task Definitions
+│   ├── rds.tf               → PostgreSQL (RDS)
+│   ├── elasticache.tf       → Redis (ElastiCache)
+│   ├── alb.tf               → Load Balancer for Medusa API
 ├── .github/
-│   └── workflows/
-│       └── deploy.yml
-├── Dockerfile
-├── medusa-config.ts
-├── package.json
+│   └── workflows/deploy.yml → CI/CD pipeline
+├── Dockerfile               → Medusa container image
+├── medusa-config.ts         → Medusa runtime config
+├── package.json             → Project dependencies
 └── README.md
