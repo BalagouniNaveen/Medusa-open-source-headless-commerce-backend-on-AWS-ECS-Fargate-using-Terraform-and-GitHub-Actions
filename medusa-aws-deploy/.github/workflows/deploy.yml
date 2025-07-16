@@ -1,35 +1,36 @@
-name: Deploy to AWS
+name: Deploy to AWS                          # Name of the GitHub Actions workflow
 
-on:
+on:                                         
   push:
-    branches: [ main ]
+    branches: [ main ]                      # Trigger the workflow only on pushes to the main branch
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  build-and-deploy:                         # Define a job named "build-and-deploy"
+    runs-on: ubuntu-latest                  # Run this job on the latest Ubuntu GitHub-hosted runner
 
-      - name: Configure AWS
+    steps:
+      - name: Checkout code                 # Step 1: Checkout source code from GitHub repo
+        uses: actions/checkout@v2           # Use the official GitHub Action to clone the repo
+
+      - name: Configure AWS                 # Step 2: Set up AWS credentials from GitHub secrets
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
-          aws-region: us-east-1
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}       # Get AWS access key from GitHub secrets
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}   # Get AWS secret key from GitHub secrets
+          aws-region: us-east-1                                   # Set AWS region for deployment
 
-      - name: Login to ECR
+      - name: Login to ECR                  # Step 3: Authenticate Docker with AWS Elastic Container Registry (ECR)
         run: |
           aws ecr get-login-password | docker login --username AWS --password-stdin <AWS_ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com
 
-      - name: Build and Push Docker Image
+      - name: Build and Push Docker Image   # Step 4: Build and push Docker image to ECR
         run: |
-          docker build -t medusa .
-          docker tag medusa:latest <ECR_URI>:latest
-          docker push <ECR_URI>:latest
+          docker build -t medusa .                                # Build Docker image with tag "medusa"
+          docker tag medusa:latest <ECR_URI>:latest               # Tag the image with the full ECR URI
+          docker push <ECR_URI>:latest                            # Push the Docker image to AWS ECR
 
-      - name: Deploy with Terraform
+      - name: Deploy with Terraform         # Step 5: Deploy infrastructure using Terraform
         run: |
-          cd terraform
-          terraform init
-          terraform apply -auto-approve
+          cd terraform                                            # Navigate to the Terraform directory
+          terraform init                                          # Initialize Terraform modules and backends
+          terraform apply -auto-approve                           # Apply the Terraform plan without manual approval
