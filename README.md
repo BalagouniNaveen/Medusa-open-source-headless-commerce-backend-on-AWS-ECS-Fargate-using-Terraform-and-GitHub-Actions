@@ -1,7 +1,11 @@
 # Medusa-open-source-headless-commerce-backend-on-AWS-ECS-Fargate-using-Terraform-and-GitHub-Actions
 
 https://github.com/medusajs/medusa/issues/485?utm_source=chatgpt.com
+
+
 https://medium.com/%40akhandsinghofficial/deploying-medusa-js-on-aws-a-cost-efficient-guide-using-ecs-fargate-spot-and-terraform-50e221d71828
+
+
 https://medusajs.com/blog/a-step-by-step-tutorial-on-how-to-deploy-a-medusa-server-on-aws/?utm_source=chatgpt.com
 
 
