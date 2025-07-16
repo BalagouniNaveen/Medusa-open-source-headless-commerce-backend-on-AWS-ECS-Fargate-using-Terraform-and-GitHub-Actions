@@ -1,15 +1,15 @@
 {
-  "name": "medusa-app",
-  "version": "1.0.0",
-  "description": "Headless commerce backend powered by MedusaJS",
-  "scripts": {
-    "dev": "medusa develop",
-    "build": "medusa build",
-    "start": "medusa start",
-    "predeploy": "medusa db:migrate",
-    "test": "jest"
+  "name": "medusa-app",                          # Name of the project/package :contentReference[oaicite:1]{index=1}
+  "version": "1.0.0",                            # Semantic version (MAJOR.MINOR.PATCH) :contentReference[oaicite:2]{index=2}
+  "description": "Headless commerce backend powered by MedusaJS",  # Brief human-readable summary :contentReference[oaicite:3]{index=3}
+  "scripts": {                                   # Predefined commands you can run via npm (e.g., `npm run start`) :contentReference[oaicite:4]{index=4}
+    "dev": "medusa develop",                     # Launch Medusa in development mode
+    "build": "medusa build",                     # Build the production-ready app
+    "start": "medusa start",                     # Start the Medusa server in production
+    "predeploy": "medusa db:migrate",            # Run DB migrations before deploying
+    "test": "jest"                               # Run tests using Jest framework
   },
-  "dependencies": {
+  "dependencies": {                              # Required packages for runtime (production) :contentReference[oaicite:5]{index=5}
     "@medusajs/medusa": "^2.6.0",
     "@medusajs/medusa/cache-redis": "^2.6.0",
     "@medusajs/medusa/event-bus-redis": "^2.6.0",
@@ -19,12 +19,12 @@
     "ioredis": "^5.3.2",
     "dotenv": "^16.3.1"
   },
-  "devDependencies": {
+  "devDependencies": {                           # Packages only needed during development/testing :contentReference[oaicite:6]{index=6}
     "typescript": "^5.3.3",
     "jest": "^29.7.0",
     "ts-jest": "^29.1.1"
   },
-  "engines": {
+  "engines": {                                   # Specify compatible runtime versions (Node ≥ 18) :contentReference[oaicite:7]{index=7}
     "node": ">=18.0.0"
   }
 }
