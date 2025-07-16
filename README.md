@@ -9,6 +9,23 @@ https://medium.com/%40akhandsinghofficial/deploying-medusa-js-on-aws-a-cost-effi
 https://medusajs.com/blog/a-step-by-step-tutorial-on-how-to-deploy-a-medusa-server-on-aws/?utm_source=chatgpt.com
 
 
+**Medusa:** A customizable, open-source e-commerce backend built on Node.js that provides APIs to manage products, carts, orders, and more for any front-end 
+
+**AWS ECS Fargate:** A serverless AWS service that runs Docker containers without needing you to manage or configure servers 
+
+**Terraform:** A tool by HashiCorp that lets you describe and manage cloud infrastructure (like servers, databases, and networks) in code, so you can deploy and update reliably 
+Terraform is an open-source “infrastructure as code” (IaC) tool developed by HashiCorp that lets you define, build, change, and manage cloud and on-premises resources using simple, human-readable configuration files—it then plans and applies those changes to provision and maintain your infrastructure reliably and consistently
+
+**terraform init** Initialize your working directory by downloading provider plugins and setting up backend, making the project ready to run
+
+**terraform plan** Generate and show an execution plan summarizing changes Terraform will make to align real infrastructure with your code
+
+**terraform apply** Apply the planned changes to create/update resources; use -auto-approve to skip confirmation prompts 
+
+**terraform destroy** Remove all resources managed by your configuration; use cautiously as it deletes live infrastructure
+
+**GitHub Actions:** GitHub’s built-in automation tool that runs workflows—like building, testing, or deploying your code—automatically when you push or update your repo
+
 To deploy the Medusa open-source headless commerce backend on AWS ECS Fargate using Terraform and GitHub Actions (CI/CD), here's a complete step-by-step solution with code, architecture, and GitHub integration.
 **
 **Project Overview
